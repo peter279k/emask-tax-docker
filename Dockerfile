@@ -23,11 +23,13 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN locale-gen "zh_TW.UTF-8"
 RUN echo 'LC_ALL="zh_TW.UTF-8"' > /etc/default/locale
 
-# Install Card Driver
+# Install Card Driver for EZ100PU
 RUN wget --no-check-certificate https://www.castlestech.com/wp-content/uploads/2016/08/201511920271676073.zip
 RUN unzip 201511920271676073.zip
 RUN unzip EZUSB_Linux/EZUSB_Linux_x86_64_v1.5.3.zip
-RUN cd EZUSB_Linux_x86_64_v1.5.3/driver_ezusb_v1.5.3_for_64_bit/ && ./driver_install
+RUN mkdir -p /usr/lib/pcsc/drivers/ezusb.bundle/Contents/Linux
+RUN cp ./EZUSB_Linux_x86_64_v1.5.3/driver_ezusb_v1.5.3_for_64_bit/drivers/ezusb.so /usr/lib/pcsc/drivers/ezusb.bundle/Contents/Linux
+RUN cp ./EZUSB_Linux_x86_64_v1.5.3//driver_ezusb_v1.5.3_for_64_bit/drivers/Info.plist /usr/lib/pcsc/drivers/ezusb.bundle/Contents
 
 # Install personal certificate card client
 
