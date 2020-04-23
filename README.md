@@ -19,12 +19,10 @@ docker pull peter279k/emask-tax-docker:latest
 
 - Download the `start.sh` from this repository and it can run this command:
 - Then execute `./start.sh` directly.
-- It will present the Firefox web browser window and have three tabs about following URLs:
+- It will present the Google Chrome web browser window and have three tabs about following URLs:
   - https://emask.taiwan.gov.tw/msk/index.jsp
   - https://tax.nat.gov.tw/alltax.html?id=1#
-  - https://iccert.nhi.gov.tw:7777
       - This URL should let user trust this certificate and add this on certificate manager manually because it's for NHIIC client daemon.
-- It should notice that the
 - And enjoy it!
 
 ## Repository file structures
@@ -33,12 +31,13 @@ docker pull peter279k/emask-tax-docker:latest
   - `./docker_build.sh --no-cache`, run Docker image building from first steps to last steps on `Dockerfile`.
 - `NHIICC_Install.sh`, this will be executed during Docker image building and it's part of NHIICC client daemon installation.
 - `run.sh`, this bash shell script will be copied to Docker image and it's the entry point during Docker container running.
-- `start.sh`, this bash shell script can help user to execute Docker image as container easily.
+- `start.sh`, this bash shell script can help user to execute Docker image as container easily. And it can execute this script directly.
 - `smartcard_list.txt`, this bash shell script is to let pcscd card scanner be easy to identify plugged card information.
 
 ## Trouble Shooting
 - It will happen known error I found:
   - The Firefox web browser will be closed unexpectedly with core dumped at some moments.
+    - **This will not happen because this Docker image uses the Google Chrome web browser instead.**
   - The error message is as follows:
 ```
 ......
@@ -60,7 +59,7 @@ Waiting for the first reader...
 ```
   - This above error happens because the card device scanner is not detected or lost scanning connection from PC/SC device scanner.
   - The current solution is:
-      - Firstly, close the Firefox browser and ensure the Docker container is not running.
+      - Firstly, close the web browser and ensure the Docker container is not running.
       - Secondly. Unplugging the card reader device and plugging this device again.
       - Lastly, running the `./start.sh` shell script again and let Docker container be restarted again.
       - If it presents following message, it will be successful to resolve card device reader scanning/detecting issue.
