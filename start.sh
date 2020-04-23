@@ -45,8 +45,11 @@ fi;
 # Ensure user can connect to X server on localhost
 xhost +localhost
 
+${sudo_pefix}docker rm emask-tax-docker
+
 echo "Running Docker container..."
 ${sudo_pefix}docker run -it \
+    --name='emask-tax-docker' \
     --env DISPLAY=$DISPLAY \
     --device /dev/bus/usb:/dev/bus/usb \
     -v ${HOME}/Downloads:/home/user/Downloads \

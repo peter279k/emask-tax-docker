@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 # Install required packages
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y firefox firefox-locale-zh-hant dbus-user-session locales tzdata ttf-wqy-microhei sudo
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y firefox firefox-locale-zh-hant dbus-x11 dbus-user-session locales tzdata ttf-wqy-microhei sudo
 
 # Install git pakage to clone repositories about card driver, personal certificate card and health ID card clients
 RUN apt-get install wget zip unzip openssl -y

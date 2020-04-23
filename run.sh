@@ -41,4 +41,6 @@ if [ $? != 0 ]; then
     exit 1;
 fi;
 
-firefox ${emask_url} ${tax_url}
+sudo /etc/init.d/dbus start
+
+firefox -no-remote ${emask_url} ${tax_url} ${iccert_nhi_url}
