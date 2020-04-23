@@ -76,6 +76,11 @@ Thu Apr 23 18:08:48 2020
 ......
 ```
 
+## Logs 紀錄
+- HiPKILocalSignServerApp 自然人憑證 and NHIIC 健保卡 客戶端網路元件的log紀錄以檔案方式存在運行的Docker container裡面. 相關log紀錄檔案路徑如下:
+  - `/tmp/HiPKILocalSignServerApp.log`
+  - `/tmp/NHIICC.log`
+
 ## Special Thanks 特別感謝
 
 這個專案靈感來自於此[personal-income-tax-docker](https://github.com/chihchun/personal-income-tax-docker)專案，特別感謝 [@chihchun](https://github.com/chihchun) :).

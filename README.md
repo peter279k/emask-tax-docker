@@ -77,6 +77,11 @@ Thu Apr 23 18:08:48 2020
 ......
 ```
 
+## Logs
+- HiPKILocalSignServerApp and NHIIC client daemons logs are stored as files inside running Docker container. Their file paths are as follows:
+  - `/tmp/HiPKILocalSignServerApp.log`
+  - `/tmp/NHIICC.log`
+
 ## Special Thanks
 
 It's inspired by [personal-income-tax-docker](https://github.com/chihchun/personal-income-tax-docker), and thanks for [@chihchun](https://github.com/chihchun/) :).
