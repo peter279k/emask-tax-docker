@@ -7,7 +7,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install --no-instal
     ttf-wqy-microhei \
     sudo
 
-# Install git pakage to clone repositories about card driver, personal certificate card and health ID card clients
+# Install some pakages to download card driver, personal certificate card and health ID card clients
 RUN apt-get install --no-install-recommends --no-upgrade wget zip unzip ca-certificates openssl libnss3-tools -y
 
 # Install google-chrome-stable web browser package and some recommended packages
