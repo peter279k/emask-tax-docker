@@ -4,9 +4,7 @@
             "ImportEnterpriseRoots": true,
             "Install": [
                 "/usr/local/mLNHIICC_Setup/cert/NHIRootCA.pem",
-                "/usr/local/mLNHIICC_Setup/cert/NHIServerCert.pem",
-                "/usr/local/mLNHIICC_Setup/cert/nhi-self-server-cert-chain.pem",
-                "/usr/local/mLNHIICC_Setup/cert/nhi-self-server-cert.pem"
+                "/usr/local/mLNHIICC_Setup/cert/NHIServerCert.pem"
             ]
         }
     }

@@ -46,6 +46,7 @@ echo "Running Docker container..."
 ${sudo_pefix}docker run -it \
     --env DISPLAY=$DISPLAY \
     --device /dev/bus/usb:/dev/bus/usb \
+    -v ${HOME}/Downloads:/home/user/Downloads \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     emask-tax-docker:latest \
     ./run.sh

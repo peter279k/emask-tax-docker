@@ -2,6 +2,7 @@
 
 emask_url='https://emask.taiwan.gov.tw/msk/index.jsp'
 tax_url='https://tax.nat.gov.tw/alltax.html?id=1#'
+iccert_nhi_url='https://iccert.nhi.gov.tw:7777'
 
 # Start smart card redaer scanning
 sudo /etc/init.d/pcscd start

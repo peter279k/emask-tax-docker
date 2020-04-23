@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 # Install required packages
-RUN apt-get update && apt-get install -y firefox firefox-locale-zh-hant dbus-user-session locales tzdata ttf-wqy-microhei sudo
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y firefox firefox-locale-zh-hant dbus-user-session locales tzdata ttf-wqy-microhei sudo
 
 # Install git pakage to clone repositories about card driver, personal certificate card and health ID card clients
 RUN apt-get install wget zip unzip openssl -y
@@ -47,11 +47,10 @@ RUN ./NHIICC_Install.sh
 # Install root certificate for health ID card client
 RUN openssl x509 -in ./cert/NHIRootCA.crt -out ./cert/NHIRootCA.pem
 RUN openssl x509 -in ./cert/NHIServerCert.crt -out ./cert/NHIServerCert.pem
-COPY *.pem ./cert/
 COPY ./firefox_policies.json /usr/lib/firefox/distribution/policies.json
 
 # Clean up unnecessary folders and packages
-RUN apt-get purge wget zip unzip openssl -y
+RUN apt-get purge wget zip unzip -y
 RUN apt-get clean -y && apt-get autoremove -y
 RUN rm -rf 201511920271676073.zip
 RUN rm -rf 'Archive created by free jZip.url'
