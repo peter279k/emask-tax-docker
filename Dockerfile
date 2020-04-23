@@ -77,7 +77,7 @@ RUN rm -rf /usr/local/*.zip
 RUN rm -rf /usr/local/*.tar.gz
 RUN rm -rf /tmp/* /var/tmp/*
 
-# Execute Firefox with current user
+# Execute Google Chrome browser with current user
 USER user
 ENV HOME /home/user
 ENV USER user
