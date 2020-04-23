@@ -31,6 +31,9 @@ else
     ${sudo_pefix}systemctl disable pcscd.socket
 fi;
 
+echo ''
+echo ''
+
 sudo_pefix=''
 echo 'Check current user can execute docker command...'
 cat /etc/group | grep docker | grep $USER 2>&1 > /dev/null

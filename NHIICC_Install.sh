@@ -11,7 +11,7 @@ echo '127.0.0.1 iccert.nhi.gov.tw' >> /etc/hosts
 # Install required packages for NHIICC client
 apt-get update
 apt-get install -y libc6
-apt-get install -y libssl1.0.0 libssl-dev --reinstall
+apt-get install -y libssl1.0.0 libssl-dev
 
 # Create NHIICC shell script to execute mLNHIICC client daemon
 echo '#!/bin/bash' >> /etc/init.d/NHIICC.sh
