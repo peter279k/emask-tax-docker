@@ -1,8 +1,16 @@
 #!/bin/bash
 
+web_browser=$1
+
+if [[ ${web_browser} == '' ]] || [[ ${web_browser} == 'firefox' ]]; then
+    echo 'Sorry! The Firefox web browser is deprecated.'
+    echo 'Using the google-chrome-stable instead...'
+fi;
+
+web_browser='google-chrome-stable --no-sandbox --use-gl=swiftshader  --ignore-certificate-errors --unsafely-treat-insecure-origin-as-secure=https://localhost:7777 --unsafely-treat-insecure-origin-as-secure=https://iccert.nhi.gov.tw:7777'
+
 emask_url='https://emask.taiwan.gov.tw/msk/index.jsp'
 tax_url='https://tax.nat.gov.tw/alltax.html?id=1#'
-iccert_nhi_url='https://iccert.nhi.gov.tw:7777'
 
 # Start smart card redaer scanning
 sudo /etc/init.d/pcscd start
@@ -41,6 +49,4 @@ if [ $? != 0 ]; then
     exit 1;
 fi;
 
-sudo /etc/init.d/dbus start
-
-firefox -no-remote ${emask_url} ${tax_url} ${iccert_nhi_url}
+${web_browser} ${emask_url} ${tax_url} ${iccert_nhi_url}

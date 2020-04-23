@@ -1,5 +1,7 @@
 #!/bin/bash
 
+web_browser=$1
+
 echo 'Check whether docker package is installed...'
 which docker 2>&1 > /dev/null
 
@@ -22,6 +24,7 @@ if [ $? != 0 ]; then
     echo 'Skip stopping card scanner on host...'
 else
     echo 'Disable pcscd service daemon on host system...'
+    echo 'You may input password for sudo...'
 
     ${sudo_pefix}/etc/init.d/pcscd stop
     ${sudo_pefix}service pcscd stop
@@ -55,4 +58,4 @@ ${sudo_pefix}docker run -it \
     -v ${HOME}/Downloads:/home/user/Downloads \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     emask-tax-docker:latest \
-    ./run.sh
+    ./run.sh ${web_browser}

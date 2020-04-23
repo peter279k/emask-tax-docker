@@ -7,7 +7,8 @@
   - pcsc_scan and car scanner tool
   - A NHIIC client daemon. (It's for Taiwan Health Card)
   - A Personal certificate card client daemon. (It's for MOICA Citizen Digital Certificate of Taiwan R.O.C. (PKI)
-  - Firefox web browser. The version is `75.0`.
+  - Firefox web browser. The version is `75.0`. **(It's deprecated because the Firefox web browser usually have unexpected core dumped frequently....)**
+  - Google Chrome web browser. (The current stable version is `81.0.4044.122` at this time.)
 
 ## Usage
 - Using following command to download Docker image:
@@ -26,6 +27,15 @@ docker pull peter279k/emask-tax-docker:latest
 - It should notice that the
 - And enjoy it!
 
+## Repository file structures
+- `docker_build.sh`, a bash shell script and the usage is as follows:
+  - `./docker_build.sh`, run Docker image building with cached Docker building steps,
+  - `./docker_build.sh --no-cache`, run Docker image building from first steps to last steps on `Dockerfile`.
+- `NHIICC_Install.sh`, this will be executed during Docker image building and it's part of NHIICC client daemon installation.
+- `run.sh`, this bash shell script will be copied to Docker image and it's the entry point during Docker container running.
+- `start.sh`, this bash shell script can help user to execute Docker image as container easily.
+- `smartcard_list.txt`, this bash shell script is to let pcscd card scanner be easy to identify plugged card information.
+
 ## Trouble Shooting
 - It will happen known error I found:
   - The Firefox web browser will be closed unexpectedly with core dumped at some moments.
@@ -37,6 +47,7 @@ line 43:    40 Bus error               (core dumped) firefox ${emask_url} ${tax_
 ```
   - This is not usual error, and it doesn't have current solution to be resolved.
   - At this moment, the current solution is to run `./start.sh` again.
+  - **If this error happens frequently, I recommend using `./start.sh google-chrome-stable` to execute Google Chrome web browser.**
   - Another known error is as follows:
 ```
 ......
@@ -66,3 +77,25 @@ Thu Apr 23 18:08:48 2020
   Card state: Card removed,
 ......
 ```
+
+## Special Thanks
+
+It's inspired by [personal-income-tax-docker](https://github.com/chihchun/personal-income-tax-docker), and thanks for @chihchun :).
+
+## References
+
+There're many references to help this Docker image to be completed :).
+
+- https://askubuntu.com/questions/1051443/cant-get-google-chrome-to-x11-forward-but-firefox-does
+- https://github.com/mozilla/policy-templates/blob/master/README.md#Certificates
+- https://capocasa.net/add-a-self-signed-certificate-to-google-chrome-in-ubuntu-linux
+- https://www.richud.com/wiki/Ubuntu_chrome_browser_import_self_signed_certificate
+- https://skandhurkat.com/post/x-forwarding-on-docker
+- https://gist.github.com/udkyo/c20935c7577c71d634f0090ef6fa8393
+- https://gist.github.com/dmouse/e76ce3d8dde00fe496da
+- https://stackoverflow.com/questions/38728176/can-you-use-a-service-worker-with-a-self-signed-certificate/57359047#57359047
+- https://stackoverflow.com/questions/24225647/docker-a-way-to-give-access-to-a-host-usb-or-serial-device
+
+## 中文使用指南
+
+- 中文[使用說明在此](README_TW.md)

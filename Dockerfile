@@ -1,10 +1,30 @@
 FROM ubuntu:18.04
 
 # Install required packages
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y firefox firefox-locale-zh-hant dbus-x11 dbus-user-session locales tzdata ttf-wqy-microhei sudo
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends --no-upgrade -y \
+    locales \
+    tzdata \
+    ttf-wqy-microhei \
+    sudo
 
 # Install git pakage to clone repositories about card driver, personal certificate card and health ID card clients
-RUN apt-get install wget zip unzip openssl -y
+RUN apt-get install --no-install-recommends --no-upgrade wget zip unzip ca-certificates openssl libnss3-tools -y
+
+# Install google-chrome-stable web browser package and some recommended packages
+RUN wget --no-check-certificate  https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN apt-get install --no-install-recommends --no-upgrade -y \
+    packagekit-gtk3-module \
+    libcanberra-gtk-module \
+    fonts-liberation \
+    libappindicator3-1 \
+    libxss1 \
+    xdg-utils \
+    libxcb-dri3-0 \
+    libx11-xcb1 \
+    libgbm1 \
+    libdrm2 \
+    libxtst6
+RUN dpkg -i ./google-chrome-stable_current_amd64.deb
 
 # Install card tool packages
 RUN apt-get update && apt-get install pcscd pcsc-tools -y
@@ -44,18 +64,17 @@ WORKDIR /usr/local/mLNHIICC_Setup
 COPY NHIICC_Install.sh ./
 RUN ./NHIICC_Install.sh
 
-# Install root certificate for health ID card client
-RUN openssl x509 -in ./cert/NHIRootCA.crt -out ./cert/NHIRootCA.pem
-RUN openssl x509 -in ./cert/NHIServerCert.crt -out ./cert/NHIServerCert.pem
-COPY ./firefox_policies.json /usr/lib/firefox/distribution/policies.json
-
 # Clean up unnecessary folders and packages
-RUN apt-get purge wget zip unzip -y
+RUN apt-get purge zip unzip -y
 RUN apt-get clean -y && apt-get autoremove -y
-RUN rm -rf 201511920271676073.zip
-RUN rm -rf 'Archive created by free jZip.url'
-RUN rm -rf EZUSB_Linux/
-RUN rm -rf EZUSB_Linux_x86_64_v1.5.3/
+RUN rm -f /google-chrome-stable_current_amd64.deb
+RUN rm -rf /usr/local/201511920271676073.zip
+RUN rm -rf /usr/local/'Archive created by free jZip.url'
+RUN rm -rf /usr/local/EZUSB_Linux/
+RUN rm -rf /usr/local/EZUSB_Linux_x86_64_v1.5.3/
+RUN rm -rf /usr/local/mLNHIICC_Setup/
+RUN rm -rf /usr/local/*.zip
+RUN rm -rf /usr/local/*.tar.gz
 RUN rm -rf /tmp/* /var/tmp/*
 
 # Execute Firefox with current user
