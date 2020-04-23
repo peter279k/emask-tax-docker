@@ -78,7 +78,7 @@ Thu Apr 23 18:08:48 2020
 
 ## Special Thanks 特別感謝
 
-這個專案靈感來自於此[personal-income-tax-docker](https://github.com/chihchun/personal-income-tax-docker)專案，特別感謝 @chihchun :).
+這個專案靈感來自於此[personal-income-tax-docker](https://github.com/chihchun/personal-income-tax-docker)專案，特別感謝 [@chihchun](https://github.com/chihchun) :).
 
 ## References 參考資料
 

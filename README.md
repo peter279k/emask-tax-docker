@@ -79,7 +79,7 @@ Thu Apr 23 18:08:48 2020
 
 ## Special Thanks
 
-It's inspired by [personal-income-tax-docker](https://github.com/chihchun/personal-income-tax-docker), and thanks for @chihchun :).
+It's inspired by [personal-income-tax-docker](https://github.com/chihchun/personal-income-tax-docker), and thanks for [@chihchun](https://github.com/chihchun/) :).
 
 ## References
 
