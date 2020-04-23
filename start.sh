@@ -57,5 +57,5 @@ ${sudo_pefix}docker run -it \
     --device /dev/bus/usb:/dev/bus/usb \
     -v ${HOME}/Downloads:/home/user/Downloads \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
-    emask-tax-docker:latest \
+    peter279k/emask-tax-docker:latest \
     ./run.sh ${web_browser}
