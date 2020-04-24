@@ -45,7 +45,7 @@ line 43:    40 Bus error               (core dumped) firefox ${emask_url} ${tax_
 ```
   - 這個錯誤目前找不太到。
   - 目前方式就是，重啟`start.sh` shell script
-  - **目前預測以Google Chrome瀏覽器執行，此錯誤不會發生。**
+  - **目前預設以Google Chrome瀏覽器執行，此錯誤不會發生。**
   - 另外一個已知的錯誤如下:
 ```
 ......
