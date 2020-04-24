@@ -36,7 +36,7 @@ docker pull peter279k/emask-tax-docker:latest
 
 ## Trouble Shooting 問題與故障排除
 - 下面是目前我找到可能已知的錯誤：
-  - 在某些情形Firefox瀏覽器會吳預警的關閉。**(Firefox目前已經被移除，且棄用了。)**
+  - 在某些情形Firefox瀏覽器會無預警的關閉。**(Firefox目前已經被移除，且棄用了。)**
   - 錯誤資訊如下:
 ```
 ......
