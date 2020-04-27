@@ -99,6 +99,7 @@ There're many references to help this Docker image to be completed :).
 - https://gist.github.com/dmouse/e76ce3d8dde00fe496da
 - https://stackoverflow.com/questions/38728176/can-you-use-a-service-worker-with-a-self-signed-certificate/57359047#57359047
 - https://stackoverflow.com/questions/24225647/docker-a-way-to-give-access-to-a-host-usb-or-serial-device
+- https://askubuntu.com/questions/89976/how-do-i-change-the-default-locale-in-ubuntu-server
 
 ## 中文使用指南
 
